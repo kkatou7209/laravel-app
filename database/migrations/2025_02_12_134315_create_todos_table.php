@@ -29,6 +29,9 @@ return new class extends Migration
             $table->boolean('done')
                 ->default(false)
                 ->comment('完了状態');
+            $table->foreignId('user_id')
+                ->references('id')
+                ->on('users');
         });
     }
 
