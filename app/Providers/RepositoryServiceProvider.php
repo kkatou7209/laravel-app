@@ -17,6 +17,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->when([
                 Todo\IndexController::class,
                 Todo\NewController::class,
+                Todo\EditController::class,
                 Todo\IndexController::class,
                 Todo\CreateController::class,
                 Todo\UpdateController::class,

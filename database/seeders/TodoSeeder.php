@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\Color;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -23,7 +24,7 @@ class TodoSeeder extends Seeder
                 'title' => fake()->realText(10),
                 'memo' => fake()->boolean() ? fake()->realText(30) : null,
                 'deadline' => fake()->dateTimeBetween('now', '+10 days'),
-                'color' => null,
+                'color' => fake()->randomElement(Color::cases()),
                 'done' => fake()->boolean(),
                 'user_id' => $user->id,
             ];

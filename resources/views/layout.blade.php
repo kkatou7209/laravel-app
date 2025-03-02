@@ -11,11 +11,13 @@
     @vite(['resources/ts/app.ts'])
     <title>{{ env('APP_NAME') }}</title>
 </head>
-<body class="h-[200vh] bg-white">
+<body class="h-dvh w-screen bg-white [&>:box-border]">
 
     @include('common.header')
 
-    @yield('main')
+    <main class="w-full h-full pt-header">
+        @yield('main')
+    </main>
 
 </body>
 </html>

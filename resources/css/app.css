@@ -1,7 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@source "../views";
 
 @theme {
     --font-sans: "M PLUS 1", "Noto Sans JP", serif;
+    --spacing-header: 10vh;
 }
