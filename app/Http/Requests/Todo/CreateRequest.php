@@ -26,8 +26,16 @@ class CreateRequest extends FormRequest
         return [
             'title' => ['required', 'string'],
             'memo' => ['nullable', 'string'],
+            'date' => ['nullable', 'date_format:Y-m-d'],
+            'time' => ['nullable', 'date_format:H:i'],
             'color' => ['nullable', new Enum(Color::class)],
-            'done' => ['required', 'boolean'],
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'title.required' => 'ToDoのタイトルが入力されていません',
         ];
     }
 }

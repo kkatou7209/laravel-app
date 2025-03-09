@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Todo;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\Repository;
+use Illuminate\Support\Carbon;
+use stdClass;
 
 class EditController extends Controller
 {
@@ -13,8 +15,25 @@ class EditController extends Controller
     )
     {}
 
-    public function __invoke()
+    public function __invoke(int $id)
     {
-        return view('todo.edit');
+        $todo = $this->repository->find($id);
+
+        if ($todo === null) {
+
+            return redirect()->route('todo.index');
+        }
+
+        $date = Carbon::create($todo->deadline);
+
+        return view('todo.edit', ['todo' => (object) [
+            'id' => $todo->id,
+           'title' => $todo->title,
+           'color' => $todo->color,
+           'done' => $todo->done,
+           'date' => $date->isoFormat('YYYY-MM-DD'),
+           'time' => $date->isoFormat('HH:mm'),
+           'memo' => $todo->memo,
+        ]]);
     }
 }

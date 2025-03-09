@@ -15,6 +15,9 @@ class IndexController extends Controller
 
     public function __invoke()
     {
-        return view('todo.index', ['todos' => $this->repository->list()]);
+        $todos = $this->repository->list()
+            ->sortBy('deadline');
+
+        return view('todo.index', ['todos' => $todos]);
     }
 }

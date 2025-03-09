@@ -17,5 +17,11 @@ class DeleteController extends Controller
     public function __invoke(DeleteRequest $request)
     {
         $data = $request->validated();
+
+        $id = $data['id'];
+
+        $this->repository->delete($id);
+
+        return redirect()->route('todo.index');
     }
 }

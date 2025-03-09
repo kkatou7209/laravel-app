@@ -9,7 +9,7 @@ class TodoRepository implements Repository
 {
     protected $table = 'todos';
 
-    public function find(int $id)
+    public function find(int $id): \stdClass|null
     {
         return DB::table($this->table)
             ->where('id', $id)
@@ -26,10 +26,10 @@ class TodoRepository implements Repository
         DB::table($this->table)->insert((array) $data);
     }
 
-    public function update(\stdClass|array $data): void
+    public function update(int $id, \stdClass|array $data): void
     {
         DB::table($this->table)
-            ->where($data->id)
+            ->where('id', $id)
             ->update((array) $data);
     }
 

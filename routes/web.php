@@ -30,7 +30,7 @@ Route::prefix('/todo')
 
         Route::get('/new', Todo\NewController::class)->name('new');
 
-        Route::get('/edit', Todo\EditController::class)->name('edit');
+        Route::get('/edit/{id}', Todo\EditController::class)->name('edit');
 
         Route::post('/create', Todo\CreateController::class)->name('create');
 
