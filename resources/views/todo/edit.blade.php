@@ -14,6 +14,9 @@
             </h2>
             <div class="mt-5 flex gap-6 flex-col">
                 <input value="{{ $todo->title }}" type="text" name="title" placeholder="ToDo" autocomplete="off" class="p-3 text-lg border-b border-gray-400 focus:outline-none focus:border-blue-500">
+                @error('title')
+                    <p class="text-red-400">{{ $message }}</p>
+                @enderror
                 <input value="{{ $todo->date }}" type="date" name="date" placeholder="期限" autocomplete="off" class="p-3 text-xs rounded-md border border-gray-400 focus:outline-blue-500">
                 <input value="{{ $todo->time }}" type="time" name="time" step="60" placeholder="期限" autocomplete="off" class="p-3 text-xs rounded-md border border-gray-400 focus:outline-blue-500">
                 <select name="color" autocomplete="off" class="p-3 text-xs rounded-md border border-gray-400 focus:outline-blue-500">

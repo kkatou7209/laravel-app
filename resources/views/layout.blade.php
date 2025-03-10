@@ -18,6 +18,5 @@
     <main class="w-full h-full pt-header">
         @yield('main')
     </main>
-
 </body>
 </html>

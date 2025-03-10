@@ -32,4 +32,11 @@ class UpdateRequest extends FormRequest
             'color' => ['nullable', new Enum(Color::class)],
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'title.required' => 'ToDoのタイトルが入力されていません',
+        ];
+    }
 }

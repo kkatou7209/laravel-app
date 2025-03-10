@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\User;
 use App\Http\Controllers\Todo;
+use Dotenv\Util\Regex;
 
 Route::get('/', HomeController::class)->name('home');
 
