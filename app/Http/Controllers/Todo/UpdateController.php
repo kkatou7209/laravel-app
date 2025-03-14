@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Todo\UpdateRequest;
 use App\Repositories\Repository;
+use Illuminate\Support\Facades\Auth;
 
 class UpdateController extends Controller
 {
@@ -33,7 +34,6 @@ class UpdateController extends Controller
             'memo' => $data['memo'],
             'deadline' => $datetime,
             'color' => $data['color'],
-            'user_id' => 1,
         ]);
 
         return redirect()->route('todo.index');

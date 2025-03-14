@@ -19,6 +19,7 @@ return new class extends Migration
                 ->nullable()
                 ->comment('詳細メモ');
             $table->dateTime('deadline')
+                ->nullable()
                 ->comment('締め切り日時');
             $table->dateTime('created_at')
                 ->useCurrent()

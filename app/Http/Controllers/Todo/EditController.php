@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\Repository;
 use Illuminate\Support\Carbon;
-use stdClass;
+use Illuminate\Support\Facades\Auth;
 
 class EditController extends Controller
 {
@@ -28,12 +28,13 @@ class EditController extends Controller
 
         return view('todo.edit', ['todo' => (object) [
             'id' => $todo->id,
-           'title' => $todo->title,
-           'color' => $todo->color,
-           'done' => $todo->done,
-           'date' => $date->isoFormat('YYYY-MM-DD'),
-           'time' => $date->isoFormat('HH:mm'),
-           'memo' => $todo->memo,
+            'title' => $todo->title,
+            'color' => $todo->color,
+            'done' => $todo->done,
+            'date' => $date->isoFormat('YYYY-MM-DD'),
+            'time' => $date->isoFormat('HH:mm'),
+            'memo' => $todo->memo,
+            'user_id' => Auth::id(),
         ]]);
     }
 }

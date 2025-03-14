@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Todo\CreateRequest;
 use App\Repositories\Repository;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 class CreateController extends Controller
 {
@@ -34,7 +34,7 @@ class CreateController extends Controller
             'memo' => $data['memo'],
             'deadline' => $datetime,
             'color' => $data['color'],
-            'user_id' => 1,
+            'user_id' => Auth::id(),
         ]);
 
         return redirect()->route('todo.index');

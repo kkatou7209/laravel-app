@@ -8,7 +8,7 @@ interface Repository
 {
     public function find(int $id): \stdClass|null;
 
-    public function list(): Collection;
+    public function list(int $userId): Collection;
 
     public function add(\stdClass|array $data): void;
 

@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Http\Controllers\Todo;
+use App\Http\Controllers\Api;
 use App\Repositories\Repository;
 use App\Repositories\TodoRepository;
 
@@ -22,6 +23,7 @@ class RepositoryServiceProvider extends ServiceProvider
                 Todo\CreateController::class,
                 Todo\UpdateController::class,
                 Todo\DeleteController::class,
+                Api\Todo\ToggleController::class,
             ])
             ->needs(Repository::class)
             ->give(fn() => new TodoRepository());

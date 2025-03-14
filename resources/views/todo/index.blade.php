@@ -20,7 +20,7 @@
                     <div class="mt-2">
                         <input type="checkbox" @checked($todo->done) class="todo-done w-[25px] h-[25px]" todo-id="{{ $todo->id }}">
                     </div>
-                    <div class="w-full flex flex-col gap-3">
+                    <div class="w-full flex flex-col items-start gap-3">
                         <x-link href="{{ route('todo.edit', ['id' => $todo->id]) }}" class="text-md font-semibold tracking-wider">
                             {{ $todo->title }}
                         </x-link>

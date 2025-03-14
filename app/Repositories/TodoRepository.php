@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class TodoRepository implements Repository
@@ -13,12 +14,15 @@ class TodoRepository implements Repository
     {
         return DB::table($this->table)
             ->where('id', $id)
+            ->where('user_id', Auth::id())
             ->first();
     }
 
-    public function list(): Collection
+    public function list(int $userId): Collection
     {
-        return DB::table($this->table)->get();
+        return DB::table($this->table)
+            ->where('user_id', $userId)
+            ->get();
     }
 
     public function add(\stdClass|array $data): void
@@ -30,11 +34,14 @@ class TodoRepository implements Repository
     {
         DB::table($this->table)
             ->where('id', $id)
+            ->where('user_id', Auth::id())
             ->update((array) $data);
     }
 
     public function delete(int $id): void
     {
-        DB::table($this->table)->delete($id);
+        DB::table($this->table)
+            ->where('user_id', Auth::id())
+            ->delete($id);
     }
 }
